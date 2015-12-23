@@ -15,6 +15,19 @@
 		270EAD3A1C24084D004DAB61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 270EAD381C24084D004DAB61 /* LaunchScreen.storyboard */; };
 		270EAD451C24084D004DAB61 /* LALWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EAD441C24084D004DAB61 /* LALWeatherTests.m */; };
 		270EAD501C24084D004DAB61 /* LALWeatherUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EAD4F1C24084D004DAB61 /* LALWeatherUITests.m */; };
+		270EAD601C24088D004DAB61 /* LALMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EAD5F1C24088D004DAB61 /* LALMainViewController.m */; };
+		270EAD631C240949004DAB61 /* LALWundergroundDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EAD621C240949004DAB61 /* LALWundergroundDownloader.m */; };
+		270EAD661C2409DB004DAB61 /* LALWeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EAD651C2409DB004DAB61 /* LALWeatherData.m */; };
+		270EAD681C240A39004DAB61 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270EAD671C240A39004DAB61 /* CoreLocation.framework */; };
+		273893971C29288C007E620E /* LALSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273893961C29288C007E620E /* LALSettingsViewController.m */; };
+		2738939A1C2928E0007E620E /* LALAddLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273893991C2928E0007E620E /* LALAddLocationViewController.m */; };
+		2738939D1C292C29007E620E /* LALStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738939C1C292C29007E620E /* LALStateManager.m */; };
+		273893A21C294494007E620E /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738939F1C294494007E620E /* UIImage+ImageEffects.m */; };
+		273893A31C294494007E620E /* NSString+Substring.m in Sources */ = {isa = PBXBuildFile; fileRef = 273893A11C294494007E620E /* NSString+Substring.m */; };
+		27906BC71C2A7F0F00C68D6D /* LALMainViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 27906BC61C2A7F0F00C68D6D /* LALMainViewController2.m */; };
+		27A5F7041C252A7A00A3CB26 /* LALPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5F7031C252A7A00A3CB26 /* LALPagingScrollView.m */; };
+		27A5F70A1C255FF000A3CB26 /* LALWeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5F7091C255FF000A3CB26 /* LALWeatherView.m */; };
+		27F828341C264C3B00EC201D /* Climacons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27A5F70B1C2641C300A3CB26 /* Climacons.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +64,31 @@
 		270EAD4B1C24084D004DAB61 /* LALWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LALWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		270EAD4F1C24084D004DAB61 /* LALWeatherUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LALWeatherUITests.m; sourceTree = "<group>"; };
 		270EAD511C24084D004DAB61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		270EAD5E1C24088D004DAB61 /* LALMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LALMainViewController.h; sourceTree = "<group>"; };
+		270EAD5F1C24088D004DAB61 /* LALMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LALMainViewController.m; sourceTree = "<group>"; };
+		270EAD611C240949004DAB61 /* LALWundergroundDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LALWundergroundDownloader.h; sourceTree = "<group>"; };
+		270EAD621C240949004DAB61 /* LALWundergroundDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LALWundergroundDownloader.m; sourceTree = "<group>"; };
+		270EAD641C2409DB004DAB61 /* LALWeatherData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LALWeatherData.h; sourceTree = "<group>"; };
+		270EAD651C2409DB004DAB61 /* LALWeatherData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LALWeatherData.m; sourceTree = "<group>"; };
+		270EAD671C240A39004DAB61 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		273893951C29288C007E620E /* LALSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LALSettingsViewController.h; path = ../LALSettingsViewController.h; sourceTree = "<group>"; };
+		273893961C29288C007E620E /* LALSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LALSettingsViewController.m; path = ../LALSettingsViewController.m; sourceTree = "<group>"; };
+		273893981C2928E0007E620E /* LALAddLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LALAddLocationViewController.h; sourceTree = "<group>"; };
+		273893991C2928E0007E620E /* LALAddLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LALAddLocationViewController.m; sourceTree = "<group>"; };
+		2738939B1C292C29007E620E /* LALStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LALStateManager.h; sourceTree = "<group>"; };
+		2738939C1C292C29007E620E /* LALStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LALStateManager.m; sourceTree = "<group>"; };
+		2738939E1C294494007E620E /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		2738939F1C294494007E620E /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		273893A01C294494007E620E /* NSString+Substring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Substring.h"; sourceTree = "<group>"; };
+		273893A11C294494007E620E /* NSString+Substring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Substring.m"; sourceTree = "<group>"; };
+		27906BC51C2A7F0F00C68D6D /* LALMainViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LALMainViewController2.h; sourceTree = "<group>"; };
+		27906BC61C2A7F0F00C68D6D /* LALMainViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LALMainViewController2.m; sourceTree = "<group>"; };
+		27A5F7021C252A7A00A3CB26 /* LALPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LALPagingScrollView.h; sourceTree = "<group>"; };
+		27A5F7031C252A7A00A3CB26 /* LALPagingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LALPagingScrollView.m; sourceTree = "<group>"; };
+		27A5F7081C255FF000A3CB26 /* LALWeatherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LALWeatherView.h; sourceTree = SOURCE_ROOT; };
+		27A5F7091C255FF000A3CB26 /* LALWeatherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LALWeatherView.m; sourceTree = SOURCE_ROOT; };
+		27A5F70B1C2641C300A3CB26 /* Climacons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Climacons.ttf; sourceTree = "<group>"; };
+		27F828351C264CBC00EC201D /* Climacons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Climacons.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				270EAD681C240A39004DAB61 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,14 +140,18 @@
 		270EAD291C24084D004DAB61 /* LALWeather */ = {
 			isa = PBXGroup;
 			children = (
+				27A5F70B1C2641C300A3CB26 /* Climacons.ttf */,
+				27F828351C264CBC00EC201D /* Climacons.h */,
 				270EAD2D1C24084D004DAB61 /* AppDelegate.h */,
 				270EAD2E1C24084D004DAB61 /* AppDelegate.m */,
 				270EAD301C24084D004DAB61 /* ViewController.h */,
 				270EAD311C24084D004DAB61 /* ViewController.m */,
+				27F828361C26548500EC201D /* Models */,
 				270EAD331C24084D004DAB61 /* Main.storyboard */,
 				270EAD361C24084D004DAB61 /* Assets.xcassets */,
 				270EAD381C24084D004DAB61 /* LaunchScreen.storyboard */,
-				270EAD3B1C24084D004DAB61 /* Info.plist */,
+				27A5F7051C252A8300A3CB26 /* Views */,
+				270EAD5D1C24085F004DAB61 /* ViewControllers */,
 				270EAD2A1C24084D004DAB61 /* Supporting Files */,
 			);
 			path = LALWeather;
@@ -117,6 +160,8 @@
 		270EAD2A1C24084D004DAB61 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				270EAD3B1C24084D004DAB61 /* Info.plist */,
+				270EAD671C240A39004DAB61 /* CoreLocation.framework */,
 				270EAD2B1C24084D004DAB61 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -138,6 +183,57 @@
 				270EAD511C24084D004DAB61 /* Info.plist */,
 			);
 			path = LALWeatherUITests;
+			sourceTree = "<group>";
+		};
+		270EAD5D1C24085F004DAB61 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				270EAD5E1C24088D004DAB61 /* LALMainViewController.h */,
+				270EAD5F1C24088D004DAB61 /* LALMainViewController.m */,
+				27906BC51C2A7F0F00C68D6D /* LALMainViewController2.h */,
+				27906BC61C2A7F0F00C68D6D /* LALMainViewController2.m */,
+				273893981C2928E0007E620E /* LALAddLocationViewController.h */,
+				273893991C2928E0007E620E /* LALAddLocationViewController.m */,
+				273893951C29288C007E620E /* LALSettingsViewController.h */,
+				273893961C29288C007E620E /* LALSettingsViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		273893A41C294499007E620E /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				2738939E1C294494007E620E /* UIImage+ImageEffects.h */,
+				2738939F1C294494007E620E /* UIImage+ImageEffects.m */,
+				273893A01C294494007E620E /* NSString+Substring.h */,
+				273893A11C294494007E620E /* NSString+Substring.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		27A5F7051C252A8300A3CB26 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				27A5F7081C255FF000A3CB26 /* LALWeatherView.h */,
+				27A5F7091C255FF000A3CB26 /* LALWeatherView.m */,
+				27A5F7021C252A7A00A3CB26 /* LALPagingScrollView.h */,
+				27A5F7031C252A7A00A3CB26 /* LALPagingScrollView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		27F828361C26548500EC201D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				273893A41C294499007E620E /* Categories */,
+				270EAD641C2409DB004DAB61 /* LALWeatherData.h */,
+				270EAD651C2409DB004DAB61 /* LALWeatherData.m */,
+				270EAD611C240949004DAB61 /* LALWundergroundDownloader.h */,
+				270EAD621C240949004DAB61 /* LALWundergroundDownloader.m */,
+				2738939B1C292C29007E620E /* LALStateManager.h */,
+				2738939C1C292C29007E620E /* LALStateManager.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F828341C264C3B00EC201D /* Climacons.ttf in Resources */,
 				270EAD3A1C24084D004DAB61 /* LaunchScreen.storyboard in Resources */,
 				270EAD371C24084D004DAB61 /* Assets.xcassets in Resources */,
 				270EAD351C24084D004DAB61 /* Main.storyboard in Resources */,
@@ -270,9 +367,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273893971C29288C007E620E /* LALSettingsViewController.m in Sources */,
+				2738939A1C2928E0007E620E /* LALAddLocationViewController.m in Sources */,
+				2738939D1C292C29007E620E /* LALStateManager.m in Sources */,
 				270EAD321C24084D004DAB61 /* ViewController.m in Sources */,
+				27A5F7041C252A7A00A3CB26 /* LALPagingScrollView.m in Sources */,
 				270EAD2F1C24084D004DAB61 /* AppDelegate.m in Sources */,
+				270EAD661C2409DB004DAB61 /* LALWeatherData.m in Sources */,
 				270EAD2C1C24084D004DAB61 /* main.m in Sources */,
+				273893A21C294494007E620E /* UIImage+ImageEffects.m in Sources */,
+				270EAD631C240949004DAB61 /* LALWundergroundDownloader.m in Sources */,
+				270EAD601C24088D004DAB61 /* LALMainViewController.m in Sources */,
+				27A5F70A1C255FF000A3CB26 /* LALWeatherView.m in Sources */,
+				27906BC71C2A7F0F00C68D6D /* LALMainViewController2.m in Sources */,
+				273893A31C294494007E620E /* NSString+Substring.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +606,7 @@
 				270EAD561C24084D004DAB61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		270EAD571C24084D004DAB61 /* Build configuration list for PBXNativeTarget "LALWeatherTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +615,7 @@
 				270EAD591C24084D004DAB61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		270EAD5A1C24084D004DAB61 /* Build configuration list for PBXNativeTarget "LALWeatherUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +624,7 @@
 				270EAD5C1C24084D004DAB61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
