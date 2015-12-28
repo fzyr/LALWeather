@@ -93,7 +93,7 @@
 
 -(NSString *)description{
     
-    NSString *day0Description = [NSString stringWithFormat:@"%@, <%@,%@>, %@, %@, %@, %@", self.currentSnapshot. weatherDescription,self.currentSnapshot.lowTemperature,self.currentSnapshot.hightTemperature, self.currentSnapshot.weekday, self.currentSnapshot.weatherDescription, self.currentSnapshot.iconText, self.placemark.locality];
+    NSString *day0Description = [NSString stringWithFormat:@"%@, %@<%@,%@>, %@, %@, %@, %@", self.currentSnapshot.weatherDescription,self.currentSnapshot.currentTemperature, self.currentSnapshot.lowTemperature,self.currentSnapshot.hightTemperature, self.currentSnapshot.weekday, self.currentSnapshot.weatherDescription, self.currentSnapshot.iconText, self.placemark.locality];
     
     LALWeatherDataSnapshot *day1 = [self.forecastSnapshots objectAtIndex:0];
     NSString *day1Description = [NSString stringWithFormat:@"%@, <%@,%@>, %@, %@, %@",day1.weatherDescription, day1.lowTemperature,day1.hightTemperature, day1.weekday, day1.weatherDescription, day1.iconText];
@@ -104,7 +104,7 @@
     LALWeatherDataSnapshot *day3 = [self.forecastSnapshots objectAtIndex:2];
     NSString *day3Description = [NSString stringWithFormat:@"%@, <%@,%@>, %@, %@, %@",day3.weatherDescription, day3.lowTemperature,day3.hightTemperature, day3.weekday, day3.weatherDescription, day3.iconText];
     
-    NSString *descrip = [NSString stringWithFormat:@"day0: %@,\nday1: %@,\nday2: %@,\nday3: %@\n",day0Description, day1Description, day2Description, day3Description];
+    NSString *descrip = [NSString stringWithFormat:@"created: %@---day0: %@,\nday1: %@,\nday2: %@,\nday3: %@\n",[self.timeStamp descriptionWithLocale:[NSLocale currentLocale]], day0Description, day1Description, day2Description, day3Description];
     
     return descrip;
     

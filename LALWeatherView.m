@@ -42,8 +42,10 @@
         self.container = [[UIView alloc] initWithFrame:self.bounds];
         [self.container setBackgroundColor:[UIColor clearColor]];
         [self addSubview:self.container];
+
         
-        self.ribbon = [[UIView alloc] initWithFrame:CGRectMake(0,1.38*self.center.y, self.bounds.size.width, 80)];
+        self.ribbon = [[UIView alloc] initWithFrame:CGRectMake(0,1.30*self.center.y, self.bounds.size.width, 80)];
+        self.ribbon.backgroundColor = [UIColor colorWithWhite:1 alpha:0.1];
         [self.container addSubview:self.ribbon];
         
         self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
@@ -64,47 +66,12 @@
         [self initializeForecastIconLabels];
         [self initializeMottionEffects];
         
+       
     }
     return self;
 }
 
--(void)updateWeatherViewWithData:(LALWeatherData *)weatherData{
-    if(!weatherData){
-        return;
-    }
-    self.hasData = YES;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.updatedLabel.text = [weatherData.dateFormatter stringFromDate:weatherData.timeStamp];
-        self.conditionIconLabel.text = weatherData.currentSnapshot.iconText;
-        self.conditionDescriptionLabel.text = weatherData.currentSnapshot.weatherDescription;
-        
-        // show the location
-        NSString *city = weatherData.placemark.locality;
-        NSString *state = weatherData.placemark.administrativeArea;
-        NSString *country = weatherData.placemark.country;
-        
-        self.locationLabel.text = [NSString stringWithFormat:@"%@",city];
-        self.currentTemperatureLabel.text = [weatherData.currentSnapshot.currentTemperature stringValue];
-        
-        self.hiloTemperatureLabel.text = [NSString stringWithFormat:@"%@  %@",[weatherData.currentSnapshot.lowTemperature stringValue], [weatherData.currentSnapshot.hightTemperature stringValue]];
-        // show the forecast
-        LALWeatherDataSnapshot *forecastDayOneSnapshot = [weatherData.forecastSnapshots objectAtIndex:0];
-        
-        LALWeatherDataSnapshot *forecastDayTwoSnapshot = [weatherData.forecastSnapshots objectAtIndex:1];
-        
-        LALWeatherDataSnapshot *forecastDayThreeSnapshot = [weatherData.forecastSnapshots objectAtIndex:2];
-        
-        // set forecast label
-        self.forecastDayOneLabel.text = [forecastDayOneSnapshot.weekday substringToIndex:3];
-        self.forecastDayTwoLabel.text = [forecastDayTwoSnapshot.weekday substringToIndex:3];
-        self.forecastDayThreeLabel.text = [forecastDayThreeSnapshot.weekday substringToIndex:3];
-        
-        // set forecast icon
-        self.forecastIconOneLabel.text = forecastDayOneSnapshot.iconText;
-        self.forecastIconTwoLabel.text = forecastDayTwoSnapshot.iconText;
-        self.forecastIconThreeLabel.text = forecastDayThreeSnapshot.iconText;
-    });
-}
+
 
 #pragma mark - helper method
 
@@ -135,8 +102,8 @@
 -(void)initializeConditionDescriptionLabel{
     
     const NSInteger fontSize = 48;
-    self.conditionDescriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0.75 * self.bounds.size.width, 1.5 * fontSize)];
-    [self.conditionDescriptionLabel setCenter:CGPointMake(self.center.x, self.center.y)];
+    self.conditionDescriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0.75*self.bounds.size.width, 1.5 * fontSize)];
+    [self.conditionDescriptionLabel setCenter:CGPointMake(self.container.center.x, self.container.center.y)];
     [self.conditionDescriptionLabel setBackgroundColor:[UIColor clearColor]];
     [self.conditionDescriptionLabel setTextColor:[UIColor whiteColor]];
     [self.conditionDescriptionLabel setTextAlignment:NSTextAlignmentCenter];
@@ -150,13 +117,13 @@
     
     const NSInteger fontSize = 18;
     self.locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 1.5 * fontSize)];
-    [self.locationLabel setCenter:CGPointMake(self.center.x, 1.18 * self.center.y)];
+    [self.locationLabel setCenter:CGPointMake(self.container.center.x, 1.18 * self.container.center.y)];
     [self.locationLabel setBackgroundColor:[UIColor clearColor]];
     [self.locationLabel setTextColor:[UIColor whiteColor]];
     [self.locationLabel setTextAlignment:NSTextAlignmentCenter];
     [self.locationLabel setFont:[UIFont fontWithName:LIGHT_FONT size:fontSize]];
     [self.locationLabel setNumberOfLines:0];
-    [self.locationLabel setAdjustsFontSizeToFitWidth:YES];
+    [self.locationLabel setAdjustsFontSizeToFitWidth:NO];
     [self.container addSubview:self.locationLabel];
     
 }
@@ -168,7 +135,11 @@
     [self.currentTemperatureLabel setBackgroundColor:[UIColor clearColor]];
     [self.currentTemperatureLabel setTextColor:[UIColor whiteColor]];
     [self.currentTemperatureLabel setTextAlignment:NSTextAlignmentCenter];
+    
     [self.currentTemperatureLabel setFont:[UIFont fontWithName:LIGHT_FONT size:fontSize]];
+
+    
+    
     [self.currentTemperatureLabel setNumberOfLines:0];
     [self.currentTemperatureLabel setAdjustsFontSizeToFitWidth:YES];
     [self.container addSubview:self.currentTemperatureLabel];
@@ -183,7 +154,9 @@
     [self.hiloTemperatureLabel setBackgroundColor:[UIColor clearColor]];
     [self.hiloTemperatureLabel setTextColor:[UIColor whiteColor]];
     [self.hiloTemperatureLabel setTextAlignment:NSTextAlignmentCenter];
+    
     [self.hiloTemperatureLabel setFont:[UIFont fontWithName:LIGHT_FONT size:fontSize]];
+    
     [self.hiloTemperatureLabel setNumberOfLines:0];
     [self.hiloTemperatureLabel setAdjustsFontSizeToFitWidth:YES];
     [self.container addSubview:self.hiloTemperatureLabel];
@@ -251,8 +224,6 @@
     
     [self.conditionIconLabel addMotionEffect:motionEffect2];
     self.conditionIconLabel.layer.shadowOpacity = 0.5;
-    
-
 }
 
 

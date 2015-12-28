@@ -19,20 +19,23 @@
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO;
     }
-    NSLog(@"pagingscrollview: %d",self.subviews.count);
     return self;
 }
 
 
--(void)addWeatherView:(LALWeatherView *)weatherView{
+-(void)addWeatherView:(LALWeatherView *)weatherView isLaunch:(BOOL)launch{
     if(!weatherView) return;
-    NSLog(@"pagingscrollview before add: %d, %@",self.subviews.count, self.subviews);
     NSInteger numberOfSubviews = self.subviews.count;
     [weatherView setFrame:CGRectMake(self.bounds.size.width * numberOfSubviews, 0, self.bounds.size.width, self.bounds.size.height)];
     [self setContentSize: CGSizeMake(self.bounds.size.width * (numberOfSubviews + 1), self.bounds.size.height)];
-
+ 
     [self addSubview:weatherView];
-    NSLog(@"pagingscrollview after add: %d, %@",self.subviews.count, self.subviews);
+    if(!launch){
+        NSUInteger tag = weatherView.tag;
+        if(weatherView.tag != kLOCAL_WEATHERVIEW_TAG){
+            [self scrollRectToVisible:CGRectMake(self.bounds.size.width * tag, 0, self.bounds.size.width, self.bounds.size.height) animated:YES];
+        }
+    }
 }
 
 

@@ -39,8 +39,5 @@
 
 
 @property (nonatomic, readonly) UIActivityIndicatorView *activityIndicator;
--(void)updateWeatherViewWithData:(LALWeatherData *)weatherData;
-
-
 
 @end

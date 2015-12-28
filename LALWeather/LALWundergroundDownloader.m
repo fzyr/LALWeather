@@ -62,10 +62,10 @@
                 completion(weatherData,error);
             }else{
                 [strongSelf.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-                    NSLog(@"placemarks: %@",placemarks);
+
                     if([placemarks count] > 0){
                         weatherData.placemark = [placemarks lastObject];
-                        NSLog(@"weatherData. placemark : %@", weatherData.placemark);
+
                                     completion(weatherData,error);
                     }
                 }];
@@ -109,9 +109,9 @@
     weatherData.timeStamp = [NSDate date];
     
     LALWeatherDataSnapshot *weatherSnapshotDay0 = [[LALWeatherDataSnapshot alloc] init];
-    weatherSnapshotDay0.hightTemperature = [NSNumber numberWithDouble: [forecastDay0[@"high"][@"celsius"] doubleValue]];
-    weatherSnapshotDay0.lowTemperature = [NSNumber numberWithDouble: [forecastDay0[@"low"][@"celsius"] doubleValue]];
-    weatherSnapshotDay0.currentTemperature = [NSNumber numberWithDouble: [currentObservation[@"temp_c"] doubleValue]];
+    weatherSnapshotDay0.hightTemperature = [NSNumber numberWithDouble: [forecastDay0[@"high"][@"celsius"] integerValue]];
+    weatherSnapshotDay0.lowTemperature = [NSNumber numberWithDouble: [forecastDay0[@"low"][@"celsius"] integerValue]];
+    weatherSnapshotDay0.currentTemperature = [NSNumber numberWithDouble: [currentObservation[@"temp_c"] integerValue]];
     weatherSnapshotDay0.weatherDescription = currentObservation[@"weather"];
     weatherSnapshotDay0.weekday = forecastDay0[@"date"][@"weekday"];
     weatherData.currentSnapshot = weatherSnapshotDay0;
@@ -147,7 +147,7 @@
     NSString *parameters = @"/forecast/conditions/q/";
     NSString *finalURL = [NSString stringWithFormat:@"%@%@%f,%f.json",baseURL,parameters,location.coordinate.latitude,location.coordinate.longitude];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString: finalURL]];
-    NSLog(@"%@",finalURL);
+
     return urlRequest;
 }
 
