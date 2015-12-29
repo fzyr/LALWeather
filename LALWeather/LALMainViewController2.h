@@ -16,12 +16,13 @@
 #import "Climacons.h"
 #import "LALAddLocationTableViewController.h"
 #import "LALPageControl.h"
-
+#import "LALConfigureLocationsTableViewController.h"
 
 #define kMIN_TIME_SINCE_UPDATE          3600
 #define kLOCAL_WEATHERVIEW_TAG          100
+#define kMAX_WEATHERVIEW_NUM            5
 
-@interface LALMainViewController2 : UIViewController<CLLocationManagerDelegate,LALAddLoationTableViewControllerDelegate,UIScrollViewDelegate>
+@interface LALMainViewController2 : UIViewController<CLLocationManagerDelegate, UIScrollViewDelegate, LALAddLoationTableViewControllerDelegate,LALConfigureLocationsTableViewControllerDelegate>
 
 @property (nonatomic, strong) LALPagingScrollView *pagingScrollView;
 @property (nonatomic, strong) NSMutableDictionary *weatherData;
@@ -31,6 +32,7 @@
 @property (nonatomic, strong) CLGeocoder *geocoder;
 @property (nonatomic, strong) LALWundergroundDownloader *weatherDownloader;
 @property (nonatomic, strong) UIButton *addLocationButton;
+@property (nonatomic, strong) UIButton *configureLocationsButton;
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, assign) BOOL isLaunch;
 @property (nonatomic, assign) NSInteger currentTag;

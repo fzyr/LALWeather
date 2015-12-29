@@ -12,7 +12,6 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
-        NSLog(@"%@",NSStringFromSelector(_cmd));
         self.numberOfPages = 1;
         self.pageIndicatorTintColor = [UIColor clearColor];
     }
@@ -28,12 +27,10 @@
     
     for (int i = 0; i < self.subviews.count; ++i){
         UIView *view = [self.subviews objectAtIndex:i];
-        //        NSLog(@"%d, view %@",i,view);
         if(i == 0){
             UIImageView *imageView = [self __imageViewForSubView:view];
             imageView.image = [UIImage imageNamed:@"location_icon"];
         }
-        NSLog(@"%d, view %@",i,view);
     }
 }
 

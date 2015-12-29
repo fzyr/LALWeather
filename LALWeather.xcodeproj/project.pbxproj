@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270B44C51C30EF6B00E94643 /* LALConfigureLocationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270B44C41C30EF6B00E94643 /* LALConfigureLocationsTableViewController.m */; };
 		270EAD2C1C24084D004DAB61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EAD2B1C24084D004DAB61 /* main.m */; };
 		270EAD2F1C24084D004DAB61 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EAD2E1C24084D004DAB61 /* AppDelegate.m */; };
 		270EAD321C24084D004DAB61 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EAD311C24084D004DAB61 /* ViewController.m */; };
@@ -19,7 +20,6 @@
 		270EAD661C2409DB004DAB61 /* LALWeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EAD651C2409DB004DAB61 /* LALWeatherData.m */; };
 		270EAD681C240A39004DAB61 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270EAD671C240A39004DAB61 /* CoreLocation.framework */; };
 		2732918A1C2ED32900469AAD /* LALAddLocationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273291891C2ED32900469AAD /* LALAddLocationTableViewController.m */; };
-		273893971C29288C007E620E /* LALSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273893961C29288C007E620E /* LALSettingsViewController.m */; };
 		2738939D1C292C29007E620E /* LALStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738939C1C292C29007E620E /* LALStateManager.m */; };
 		273893A21C294494007E620E /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738939F1C294494007E620E /* UIImage+ImageEffects.m */; };
 		273893A31C294494007E620E /* NSString+Substring.m in Sources */ = {isa = PBXBuildFile; fileRef = 273893A11C294494007E620E /* NSString+Substring.m */; };
@@ -29,6 +29,7 @@
 		27A5F7041C252A7A00A3CB26 /* LALPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5F7031C252A7A00A3CB26 /* LALPagingScrollView.m */; };
 		27A5F70A1C255FF000A3CB26 /* LALWeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5F7091C255FF000A3CB26 /* LALWeatherView.m */; };
 		27F828341C264C3B00EC201D /* Climacons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27A5F70B1C2641C300A3CB26 /* Climacons.ttf */; };
+		90E240E634E4103F7959B855 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75138D85E654F6004DAC0B1E /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		270B44C31C30EF6B00E94643 /* LALConfigureLocationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LALConfigureLocationsTableViewController.h; path = ../LALConfigureLocationsTableViewController.h; sourceTree = "<group>"; };
+		270B44C41C30EF6B00E94643 /* LALConfigureLocationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LALConfigureLocationsTableViewController.m; path = ../LALConfigureLocationsTableViewController.m; sourceTree = "<group>"; };
 		270EAD271C24084D004DAB61 /* LALWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LALWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		270EAD2B1C24084D004DAB61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		270EAD2D1C24084D004DAB61 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -72,8 +75,6 @@
 		270EAD671C240A39004DAB61 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		273291881C2ED32900469AAD /* LALAddLocationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LALAddLocationTableViewController.h; sourceTree = "<group>"; };
 		273291891C2ED32900469AAD /* LALAddLocationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LALAddLocationTableViewController.m; sourceTree = "<group>"; };
-		273893951C29288C007E620E /* LALSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LALSettingsViewController.h; path = ../LALSettingsViewController.h; sourceTree = "<group>"; };
-		273893961C29288C007E620E /* LALSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LALSettingsViewController.m; path = ../LALSettingsViewController.m; sourceTree = "<group>"; };
 		2738939B1C292C29007E620E /* LALStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LALStateManager.h; sourceTree = "<group>"; };
 		2738939C1C292C29007E620E /* LALStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LALStateManager.m; sourceTree = "<group>"; };
 		2738939E1C294494007E620E /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
@@ -91,6 +92,9 @@
 		27A5F7091C255FF000A3CB26 /* LALWeatherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LALWeatherView.m; sourceTree = SOURCE_ROOT; };
 		27A5F70B1C2641C300A3CB26 /* Climacons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Climacons.ttf; sourceTree = "<group>"; };
 		27F828351C264CBC00EC201D /* Climacons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Climacons.h; sourceTree = "<group>"; };
+		75138D85E654F6004DAC0B1E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7997CE536EC47E41A04F00DE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CD63B4DAC7A04F4E2C78B9E4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				270EAD681C240A39004DAB61 /* CoreLocation.framework in Frameworks */,
+				90E240E634E4103F7959B855 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +124,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		215F7F7B21F03774D86630A5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CD63B4DAC7A04F4E2C78B9E4 /* Pods.debug.xcconfig */,
+				7997CE536EC47E41A04F00DE /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		270EAD1E1C24084D004DAB61 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +140,8 @@
 				270EAD431C24084D004DAB61 /* LALWeatherTests */,
 				270EAD4E1C24084D004DAB61 /* LALWeatherUITests */,
 				270EAD281C24084D004DAB61 /* Products */,
+				215F7F7B21F03774D86630A5 /* Pods */,
+				63137ACF68AB47D56F285B98 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,8 +211,8 @@
 				27906BC61C2A7F0F00C68D6D /* LALMainViewController2.m */,
 				273291881C2ED32900469AAD /* LALAddLocationTableViewController.h */,
 				273291891C2ED32900469AAD /* LALAddLocationTableViewController.m */,
-				273893951C29288C007E620E /* LALSettingsViewController.h */,
-				273893961C29288C007E620E /* LALSettingsViewController.m */,
+				270B44C31C30EF6B00E94643 /* LALConfigureLocationsTableViewController.h */,
+				270B44C41C30EF6B00E94643 /* LALConfigureLocationsTableViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -239,6 +255,14 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		63137ACF68AB47D56F285B98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75138D85E654F6004DAC0B1E /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,9 +270,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 270EAD541C24084D004DAB61 /* Build configuration list for PBXNativeTarget "LALWeather" */;
 			buildPhases = (
+				0EB735DF33829271E956606B /* Check Pods Manifest.lock */,
 				270EAD231C24084D004DAB61 /* Sources */,
 				270EAD241C24084D004DAB61 /* Frameworks */,
 				270EAD251C24084D004DAB61 /* Resources */,
+				15E243D540DB4E3DB3AAF560 /* Embed Pods Frameworks */,
+				B3C4D0C6F0CAA77BBB949A99 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -366,12 +393,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0EB735DF33829271E956606B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		15E243D540DB4E3DB3AAF560 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3C4D0C6F0CAA77BBB949A99 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		270EAD231C24084D004DAB61 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				273893971C29288C007E620E /* LALSettingsViewController.m in Sources */,
 				2732918A1C2ED32900469AAD /* LALAddLocationTableViewController.m in Sources */,
 				274FB11C1C2FF98A001D0636 /* LALPageControl.m in Sources */,
 				2738939D1C292C29007E620E /* LALStateManager.m in Sources */,
@@ -379,6 +453,7 @@
 				27A5F7041C252A7A00A3CB26 /* LALPagingScrollView.m in Sources */,
 				270EAD2F1C24084D004DAB61 /* AppDelegate.m in Sources */,
 				270EAD661C2409DB004DAB61 /* LALWeatherData.m in Sources */,
+				270B44C51C30EF6B00E94643 /* LALConfigureLocationsTableViewController.m in Sources */,
 				270EAD2C1C24084D004DAB61 /* main.m in Sources */,
 				273893A21C294494007E620E /* UIImage+ImageEffects.m in Sources */,
 				270EAD631C240949004DAB61 /* LALWundergroundDownloader.m in Sources */,
@@ -523,9 +598,11 @@
 		};
 		270EAD551C24084D004DAB61 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD63B4DAC7A04F4E2C78B9E4 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LALWeather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lol.Johnson.LALWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -534,9 +611,11 @@
 		};
 		270EAD561C24084D004DAB61 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7997CE536EC47E41A04F00DE /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LALWeather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lol.Johnson.LALWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";

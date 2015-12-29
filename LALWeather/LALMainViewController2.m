@@ -17,29 +17,39 @@
 
     self.view.backgroundColor = [UIColor colorWithRed:75/255.0 green:126/255.0 blue:227/255.0 alpha:1];
     [self setModalPresentationStyle:UIModalPresentationCustom];
-    [self initializeModel];
+    [self __initializeModel];
     [self initializeWeatherDownloader];
     
     [self initializePagingScrollView];
     [self initializeLocalWeatherView];
     [self initializeNonlocalWeatherView];
     [self initializePageControl];
-    
 
     [self initializeLocationManager];
+    
     [self initializeAddLocationButton];
+    [self initializeConfigureLocationsButton];
+ 
 
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    NSLog(@"viewDidAppear");
     self.pageControl.numberOfPages = self.weatherTags.count;
     self.pageControl.currentPage = self.currentTag;
-
+    if(self.weatherTags.count >= kMAX_WEATHERVIEW_NUM){
+        [self.addLocationButton setHidden:YES];
+    }else{
+        [self.addLocationButton setHidden:NO];
+    }
+    if(self.weatherTags.count <= 1 ){
+        [self.configureLocationsButton setHidden:YES];
+    }else{
+        [self.configureLocationsButton setHidden:NO];
+    }
 }
 
--(void)initializeModel{
+-(void)__initializeModel{
     self.weatherData = [NSMutableDictionary dictionaryWithDictionary:[LALStateManager weatherData]];
     if(!self.weatherData){
         self.weatherData = [NSMutableDictionary dictionaryWithCapacity:5];
@@ -49,6 +59,10 @@
     if(!self.weatherTags){
         self.weatherTags = [NSMutableArray arrayWithCapacity:5];
     }
+}
+
+-(void)initializeWeatherDownloader{
+    self.weatherDownloader = [LALWundergroundDownloader sharedDownloader];
 }
 
 -(void)initializePagingScrollView{
@@ -86,26 +100,18 @@
             LALWeatherData *nonLocalWeatherData = [self.weatherData objectForKey:[NSNumber numberWithInteger:tag]];
     
             if([[NSDate date] timeIntervalSinceDate: nonLocalWeatherData.timeStamp] > kMIN_TIME_SINCE_UPDATE){
-                NSLog(@"> kMIN_Time_Since_update");
-                NSLog(@"placemark.locality: %@",nonLocalWeatherData.placemark.locality);
+
                 [self.weatherDownloader dataForPlacemark:nonLocalWeatherData.placemark withTag:tag completion:^(LALWeatherData *data, NSError *error) {
-                    NSLog(@"into weatherDownloader");
                     if(!error){
-                        NSLog(@"before success");
                         [self downloadDidSucccessForWeatherViewWithTag:tag andWeatherData:data];
-                        NSLog(@"download success with tag: %d",tag);
                     }
                     else{
-                        NSLog(@"before fail");
                         [self downloadDidFailForWeatherViewWithTag:tag];
-                        NSLog(@"download failure with tag: %d",tag);
                     }
                     
                 }];
-                NSLog(@"after weatherDwonloder");
             }else{
                 [self updateWeatherView:nonLocalWeatherView WithData:nonLocalWeatherData];
-                NSLog(@" else");
             }
         }
     }
@@ -114,15 +120,34 @@
 
 -(void)initializeAddLocationButton{
     self.addLocationButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *image = [UIImage imageNamed:@"add_BTN_512"];
+    [self.addLocationButton setHidden:NO];
+    UIImage *image = [UIImage imageNamed:@"plus_BTN_100"];
     [self.addLocationButton setBackgroundImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [self.addLocationButton setTintColor:[UIColor whiteColor]];
-    [self.addLocationButton setFrame:CGRectMake(0, 0, 30, 30)];
+     [self.addLocationButton setFrame:CGRectMake(0, 0, 30, 30)];
     [self.addLocationButton setCenter:CGPointMake(self.pagingScrollView.center.x * 1.8, self.pagingScrollView.center.y * 1.8)];
     [self.addLocationButton addTarget:self action:@selector(addLocationButtonDidPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.addLocationButton];
-
+    if(self.weatherTags.count >= kMAX_WEATHERVIEW_NUM){
+        [self.addLocationButton setHidden:YES];
+    }
 }
+
+-(void)initializeConfigureLocationsButton{
+    self.configureLocationsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *image = [UIImage imageNamed:@"configure_BTN_512"];
+    [self.configureLocationsButton setBackgroundImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [self.configureLocationsButton setTintColor:[UIColor whiteColor]];
+    [self.configureLocationsButton setFrame:CGRectMake(0, 0, 30, 30)];
+    [self.configureLocationsButton setCenter:CGPointMake(self.pagingScrollView.center.x * 0.2, self.pagingScrollView.center.y * 1.8)];
+    [self.configureLocationsButton addTarget:self action:@selector(configureLocationsButtonDidPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.configureLocationsButton];
+    if(self.weatherTags.count <= 1 ){
+        [self.configureLocationsButton setHidden:YES];
+    }
+    
+}
+
 
 -(void)addLocationButtonDidPressed:(id)sender{
     LALAddLocationTableViewController *addLocationTVC = [[LALAddLocationTableViewController alloc] init];
@@ -130,6 +155,19 @@
     [self presentViewController:addLocationTVC animated:YES completion:nil];
     
 }
+
+-(void)configureLocationsButtonDidPressed:(id)sender{
+    
+    LALConfigureLocationsTableViewController *configureLocationTVC = [[LALConfigureLocationsTableViewController alloc] init];
+ 
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:configureLocationTVC];
+    configureLocationTVC.nonlocalWeatherData = [self __nonlocalWeatherDataArrayFromWeatherDataDictionary:self.weatherData];
+    configureLocationTVC.delegate = self;
+    [self presentViewController:nav animated:YES completion:nil];
+
+}
+
+
 
 -(void)initializePageControl{
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 20)];
@@ -140,9 +178,7 @@
     [self.pageControl addTarget:self action:@selector(pageControlButtonDidPressed:) forControlEvents:UIControlEventTouchUpInside];
 }
 
--(void)initializeWeatherDownloader{
-    self.weatherDownloader = [LALWundergroundDownloader sharedDownloader];
-}
+
 
 -(void)initializeLocationManager{
     if(!_locationManager){
@@ -157,10 +193,7 @@
 
 };
 
--(void)updateLocationButtonDidPressed:(id)sender{
 
-
-}
 
 -(void)pageControlButtonDidPressed:(id)sender{
     CGFloat x = self.pageControl.currentPage * self.pagingScrollView.bounds.size.width;
@@ -175,7 +208,7 @@
     LALWeatherView *localWeatherView = (LALWeatherView *)[self.pagingScrollView viewWithTag:kLOCAL_WEATHERVIEW_TAG];
     [localWeatherView.activityIndicator startAnimating];
     LALWeatherData *localWeatherData = [self.weatherData objectForKey:@kLOCAL_WEATHERVIEW_TAG];
-
+    [localWeatherView.activityIndicator startAnimating];
     //2. 如果没有weatherData或者weatherData创建超过一个小时，则重新获取
     if(!localWeatherData || [[NSDate date] timeIntervalSinceDate: localWeatherData.timeStamp] > kMIN_TIME_SINCE_UPDATE){
         [self.weatherDownloader dataForLocation:[locations lastObject] withTag:kLOCAL_WEATHERVIEW_TAG completion:^(LALWeatherData *data, NSError *error) {
@@ -225,11 +258,9 @@
         weatherView.conditionIconLabel.text = weatherData.currentSnapshot.iconText;
         weatherView.conditionDescriptionLabel.text = weatherData.currentSnapshot.weatherDescription;
         
-        // show the location
-        NSString *city = weatherData.placemark.locality;
-        NSString *state = weatherData.placemark.administrativeArea;
-        NSString *country = weatherData.placemark.country;
-        
+        // show the location,去掉“市”，同一地名显示（有些locality有市，有些没有）
+        NSString *tempCity = weatherData.placemark.locality;
+        NSString *city = [tempCity stringByReplacingOccurrencesOfString:@"市" withString:@""];
         weatherView.locationLabel.text = [NSString stringWithFormat:@"%@",city];
 
         
@@ -335,12 +366,88 @@
         else{
             [self downloadDidFailForWeatherViewWithTag:nonLocalWeatherViewTag];
         }
+
     }];
 }
 
 -(void)dismissAddLocationTableViewController{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - LALConfigureLocationsTableViewControllerDelegate
+
+-(void)selectWeatherDataWithTag:(NSInteger)tag{
+    self.currentTag = tag + 1;
+    [self.pagingScrollView scrollRectToVisible:CGRectMake(self.pagingScrollView.bounds.size.width * self.currentTag, 0, self.pagingScrollView.bounds.size.width, self.pagingScrollView.bounds.size.height) animated:YES];
+}
+
+-(void)dismissConfigureLocationsTableViewController:(LALConfigureLocationsTableViewController *)configureLocationsTableViewController withWeatherData:(NSArray *)weatherData{
+    
+    self.weatherData = [self __weathDataDicionaryFromNonLocalWeatherDataArray:weatherData];
+    [LALStateManager setWeatherData:self.weatherData];
+
+    NSMutableArray *tempTags  = [[self.weatherData allKeys] mutableCopy];
+    
+    [tempTags removeObject:[NSNumber numberWithInteger:kLOCAL_WEATHERVIEW_TAG]];
+
+    tempTags = [[tempTags sortedArrayUsingSelector:@selector(compare:)] mutableCopy];
+
+    [tempTags insertObject:[NSNumber numberWithInteger:kLOCAL_WEATHERVIEW_TAG] atIndex:0];
+    self.weatherTags = tempTags;
+    
+    [LALStateManager setWeatherTags:self.weatherTags];
+
+    [self.pagingScrollView removeFromSuperview];
+    
+    [self initializePagingScrollView];
+    [self initializeLocalWeatherView];
+    [self initializeLocationManager];
+    [self initializeNonlocalWeatherView];
+    [self.view bringSubviewToFront:self.pagingScrollView];
+    [self.view bringSubviewToFront:self.addLocationButton];
+    [self.view bringSubviewToFront:self.configureLocationsButton];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(NSMutableDictionary *)__weathDataDicionaryFromNonLocalWeatherDataArray:(NSArray *)nonLocalWeatherData{
+    NSMutableDictionary *tempWeatherData = [[NSMutableDictionary alloc] initWithCapacity:5];
+    NSNumber *key = [NSNumber numberWithInteger:kLOCAL_WEATHERVIEW_TAG];
+    [tempWeatherData setObject:[self.weatherData objectForKey:key] forKey:key];
+    for(NSInteger i = 0; i < nonLocalWeatherData.count; ++i){
+        key = [NSNumber numberWithInteger:i+1];
+        [tempWeatherData setObject:nonLocalWeatherData[i]  forKey:key];
+    }
+    return tempWeatherData;
+}
+
+-(NSMutableArray *)__nonlocalWeatherDataArrayFromWeatherDataDictionary:(NSDictionary *)weatherData{
+    
+    NSArray *allKeys = [weatherData allKeys];
+    NSMutableArray *tempNonlocalWeatherData = [[NSMutableArray alloc] initWithCapacity:5];
+    NSArray *sortedAllKeys = [allKeys sortedArrayUsingSelector:@selector(compare:)];
+    for(NSString *key in sortedAllKeys){
+        if([key integerValue] != kLOCAL_WEATHERVIEW_TAG){
+            NSInteger index = [key integerValue] - 1;
+            [tempNonlocalWeatherData insertObject:[self.weatherData objectForKey:key] atIndex:index];
+        }
+    }
+    return tempNonlocalWeatherData;
+}
+
+
+//refactor
+//-(void)setCurrentTag:(NSInteger)currentTag{
+//    _currentTag = currentTag;
+//
+//
+//
+//}
+
+
+
+
+
 
 
 @end
