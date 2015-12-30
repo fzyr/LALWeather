@@ -21,13 +21,17 @@
 #define kMIN_TIME_SINCE_UPDATE          3600
 #define kLOCAL_WEATHERVIEW_TAG          100
 #define kMAX_WEATHERVIEW_NUM            5
+typedef void(^GetWeatherDataCompletion)(NSError *error, LALWeatherData *weatherData, NSInteger tag);
 
 @interface LALMainViewController2 : UIViewController<CLLocationManagerDelegate, UIScrollViewDelegate, LALAddLoationTableViewControllerDelegate,LALConfigureLocationsTableViewControllerDelegate>
 
 @property (nonatomic, strong) LALPagingScrollView *pagingScrollView;
 @property (nonatomic, strong) NSMutableDictionary *weatherData;
 @property (nonatomic, strong) NSMutableArray *weatherTags;
-@property (nonatomic, strong) NSMutableArray *weatherViews;
+@property (nonatomic, assign) NSInteger currentShownIndex;
+
+
+
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLGeocoder *geocoder;
 @property (nonatomic, strong) LALWundergroundDownloader *weatherDownloader;
@@ -35,5 +39,5 @@
 @property (nonatomic, strong) UIButton *configureLocationsButton;
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, assign) BOOL isLaunch;
-@property (nonatomic, assign) NSInteger currentTag;
+
 @end

@@ -18,5 +18,5 @@
 
 @interface LALConfigureLocationsTableViewController : UITableViewController
 @property (nonatomic, weak) id<LALConfigureLocationsTableViewControllerDelegate>delegate;
-@property (nonatomic, strong) NSMutableArray *nonlocalWeatherData;
+@property (nonatomic, strong) NSMutableArray *weatherData;
 @end

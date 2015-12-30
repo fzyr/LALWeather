@@ -48,7 +48,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.nonlocalWeatherData.count;
+    return self.weatherData.count;
 }
 
 
@@ -59,7 +59,7 @@
     };
     cell.backgroundColor = [UIColor clearColor];
     
-    LALWeatherData *weatherData = [self.nonlocalWeatherData objectAtIndex:indexPath.row];
+    LALWeatherData *weatherData = [self.weatherData objectAtIndex:indexPath.row];
     NSString *tempCity = weatherData.placemark.locality;
     NSString *city = [tempCity stringByReplacingOccurrencesOfString:@"市" withString:@""];
     cell.textLabel.textColor = [UIColor whiteColor];
@@ -116,101 +116,34 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [self.delegate dismissConfigureLocationsTableViewController:self withWeatherData:self.nonlocalWeatherData];
+    [self.delegate dismissConfigureLocationsTableViewController:self withWeatherData:self.weatherData];
     [self.delegate selectWeatherDataWithTag:indexPath.row];
 }
-
--(BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath{
-//    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-//    NSLog(@"%@",NSStringFromSelector(_cmd));
-//    UILabel *conditionIconLabel = [cell viewWithTag:1];
-//    [UIView animateWithDuration:0.3 animations:^{
-//        [conditionIconLabel setCenter:CGPointMake(conditionIconLabel.center.x-40, conditionIconLabel.center.y)];
-//    }];
-//    
-//    UILabel *currentTemperatureLabel = [cell viewWithTag:2];
-//    [UIView animateWithDuration:0.3 animations:^{
-//        [currentTemperatureLabel setCenter:CGPointMake(currentTemperatureLabel.center.x-40, currentTemperatureLabel.center.y)];
-//    }];
-    return YES;
-}
-
 
 
 -(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath{
 }
 
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row == 0) return NO;
+    else return YES;
+}
 
-    [self.nonlocalWeatherData removeObjectAtIndex:indexPath.row];
-    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self.tableView reloadData];
-    if(self.nonlocalWeatherData.count == 0){
-        [self.delegate dismissConfigureLocationsTableViewController:self withWeatherData:self.nonlocalWeatherData];
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        [self.weatherData removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadData];
     }
 }
 
 -(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
-    LALWeatherData *sourceWeatherData = [self.nonlocalWeatherData objectAtIndex:sourceIndexPath.row];
-    [self.nonlocalWeatherData removeObject:sourceWeatherData];
-    [self.nonlocalWeatherData insertObject:sourceWeatherData atIndex:destinationIndexPath.row];
+    LALWeatherData *sourceWeatherData = [self.weatherData objectAtIndex:sourceIndexPath.row];
+    [self.weatherData removeObject:sourceWeatherData];
+    [self.weatherData insertObject:sourceWeatherData atIndex:destinationIndexPath.row];
 //    [self.nonlocalWeatherData exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
 
 }
 
-
-
-//
-//-(NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath{
-//
-//
-//}
-//-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
-//
-//}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
