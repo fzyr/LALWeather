@@ -16,7 +16,7 @@
 @implementation LALConfigureLocationsTableViewController
 
 -(void)loadView{
-    HPReorderTableView *reorderTableView = [HPReorderTableView alloc] ini
+
     UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
     self.tableView = tableView;
 

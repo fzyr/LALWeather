@@ -436,13 +436,6 @@
 }
 
 
-//refactor
-//-(void)setCurrentTag:(NSInteger)currentTag{
-//    _currentTag = currentTag;
-//
-//
-//
-//}
 
 
 
