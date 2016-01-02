@@ -8,7 +8,7 @@
 
 #import "LALConfigureLocationsTableViewController.h"
 #import "Climacons.h"
-#import <HPReorderTableView.h>
+
 @interface LALConfigureLocationsTableViewController ()
 
 @end
