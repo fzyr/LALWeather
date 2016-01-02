@@ -40,18 +40,21 @@
 
 -(void)dataForLocation:(CLLocation *)location withPlacemark:(CLPlacemark *)placemark withTag:(NSUInteger)tag completion:(LALWeatherDataDownloadCompletion)completion{
     
-//    requests are not made if the location and completion is nil
+//  pre-condition:  requests are not made if the location and completion is nil
     if(!location || !completion){
         return;
     }
     //turn on the nework activity indicator in the status bar
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
     NSURLRequest *urlRequest = [self urlRequestForLocation:location];
     //make an asynchronous request to the url
     __weak LALWundergroundDownloader *weakSelf = self;
+    NSLog(@"download weatherData thread: %@",[NSThread mainThread]);
     NSURLSessionDataTask *dataTask = [self.urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         LALWundergroundDownloader *strongSelf = weakSelf;
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        NSLog(@"download weatherData finish thread: %@",[NSThread mainThread]);
         if(error){
             completion(nil,error);
         }else{

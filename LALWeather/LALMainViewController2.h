@@ -17,6 +17,7 @@
 #import "LALAddLocationTableViewController.h"
 #import "LALPageControl.h"
 #import "LALConfigureLocationsTableViewController.h"
+#import <SMPageControl.h>
 
 #define kMIN_TIME_SINCE_UPDATE          3600
 #define kLOCAL_WEATHERVIEW_TAG          100
@@ -37,7 +38,7 @@ typedef void(^GetWeatherDataCompletion)(NSError *error, LALWeatherData *weatherD
 @property (nonatomic, strong) LALWundergroundDownloader *weatherDownloader;
 @property (nonatomic, strong) UIButton *addLocationButton;
 @property (nonatomic, strong) UIButton *configureLocationsButton;
-@property (nonatomic, strong) UIPageControl *pageControl;
+@property (nonatomic, strong) SMPageControl *pageControl;
 @property (nonatomic, assign) BOOL isLaunch;
 
 @end

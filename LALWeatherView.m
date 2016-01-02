@@ -52,9 +52,7 @@
         self.panGestureRecognizer.minimumNumberOfTouches = 1;
         self.panGestureRecognizer.delegate = self;
         
-        self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        self.activityIndicator.center = self.center;
-        [self.container addSubview:self.activityIndicator];
+
         
         [self initializeUpdatedLabel];
         [self initializeConditionIconLabel];
@@ -66,7 +64,10 @@
         [self initializeForecastIconLabels];
         [self initializeMottionEffects];
         
-       
+        self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        self.activityIndicator.backgroundColor = [UIColor clearColor];
+        self.activityIndicator.center = self.center;
+        [self.container addSubview:self.activityIndicator];
     }
     return self;
 }

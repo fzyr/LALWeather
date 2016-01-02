@@ -69,7 +69,7 @@
 // set the detailTextLabel frame;
     cell.detailTextLabel.text = @"                ";
     [cell.detailTextLabel sizeToFit];
-    NSLog(@"detailTextLabel : %@", cell.detailTextLabel);
+
     
     UILabel *conditionIconLabel = [cell.detailTextLabel viewWithTag:1];
     if(!conditionIconLabel){
@@ -84,7 +84,7 @@
     
     UILabel *currentTemperatureLabel = [cell.detailTextLabel viewWithTag:2];
     if(!currentTemperatureLabel){
-        currentTemperatureLabel= [[UILabel alloc] initWithFrame:CGRectMake(-10, -12, 50, cell.bounds.size.height)];
+        currentTemperatureLabel= [[UILabel alloc] initWithFrame:CGRectMake(-17, -12, 57, cell.bounds.size.height)];
         currentTemperatureLabel.font = [UIFont fontWithName:LIGHT_FONT size:25];
         currentTemperatureLabel.textColor = [UIColor whiteColor];
         currentTemperatureLabel.backgroundColor = [UIColor clearColor];
@@ -92,6 +92,12 @@
         currentTemperatureLabel.textAlignment = NSTextAlignmentRight;
         currentTemperatureLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         [cell.detailTextLabel addSubview:currentTemperatureLabel];
+    }
+    
+    if(indexPath.row == 0){
+        UIImageView *locationTagView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LALLocation_H_40"]];
+        locationTagView.center = CGPointMake(cell.contentView.center.x * 0.5, cell.contentView.center.y);
+        [cell.contentView addSubview:locationTagView];
     }
     
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
@@ -106,10 +112,7 @@
     
     currentTemperatureLabel.attributedText = abs;
     conditionIconLabel.text = weatherData.currentSnapshot.iconText;
-    
-    NSLog(@"detailTextLabel: %@",cell.detailTextLabel);
-    NSLog(@"currentTemperatureLabel: %@",currentTemperatureLabel);
-    NSLog(@"conditionIconLabel: %@",currentTemperatureLabel);
+
     
     return cell;
 }
@@ -122,14 +125,20 @@
 
 
 -(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"%@",NSStringFromSelector(_cmd));
 }
 
+//0.  When editing button is pressed
+//0.1.1 Which indexPath enters editting mode
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+        NSLog(@"%@",NSStringFromSelector(_cmd));
     if(indexPath.row == 0) return NO;
     else return YES;
 }
 
+//0.1.2 What happens when you press delete or add
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+        NSLog(@"%@",NSStringFromSelector(_cmd));
     if(editingStyle == UITableViewCellEditingStyleDelete){
         [self.weatherData removeObjectAtIndex:indexPath.row];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -137,13 +146,30 @@
     }
 }
 
+//0.2.1  which row movable as the sourceIndexPath
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"%@",NSStringFromSelector(_cmd));
+    return YES;
+}
+
+//0.2.2  First row not movable as the destinationIndexPath
+-(NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath{
+    NSLog(@"%@",NSStringFromSelector(_cmd));
+    if(proposedDestinationIndexPath.row == 0){
+        return sourceIndexPath;
+    }else{
+        return proposedDestinationIndexPath;
+    }
+}
+
+//0.2.3   When rows reorder, how you handle the data
 -(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    NSLog(@"%@",NSStringFromSelector(_cmd));
     LALWeatherData *sourceWeatherData = [self.weatherData objectAtIndex:sourceIndexPath.row];
     [self.weatherData removeObject:sourceWeatherData];
     [self.weatherData insertObject:sourceWeatherData atIndex:destinationIndexPath.row];
-//    [self.nonlocalWeatherData exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
-
 }
+
 
 
 @end
